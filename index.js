@@ -112,6 +112,7 @@ async function run() {
       const result = await query.toArray();
       res.send(result);
     });
+    // test
 
     // Get blogs
     app.get("/blogs", async (req, res) => {
