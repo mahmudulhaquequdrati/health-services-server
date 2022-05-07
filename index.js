@@ -20,11 +20,9 @@ app.use(json());
 //   credential: admin.credential.cert(serviceAccount),
 // });
 
-
 admin.initializeApp({
   credential: admin.credential.applicationDefault(),
 });
-
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.tkswl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, {
@@ -41,7 +39,9 @@ async function verifyToken(req, res, next) {
       const decodedUser = await admin.auth().verifyIdToken(token);
       // sending data to request
       req.decodedEmail = decodedUser.email;
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   }
   next();
 }
@@ -66,15 +66,6 @@ async function run() {
       res.send(result);
     });
 
-    // Get userAppointments by email and date
-    app.get("/userappointmentsED", verifyToken, async (req, res) => {
-      const email = req.query.email;
-      const date = req.query.date;
-      const query = { patientEmail: email, date: date };
-      const userSpecificAppointments = orders.find(query);
-      const result = await userSpecificAppointments.toArray();
-      res.send(result);
-    });
     // Get all users appointments
     app.get("/userAppointments", async (req, res) => {
       const query = orders.find({});
@@ -148,6 +139,16 @@ async function run() {
       const id = req.params.id;
       const query = { _id: ObjectId(id) };
       const result = await orders.deleteOne(query);
+      res.send(result);
+    });
+
+    // Get userAppointments by email and date
+    app.get("/userappointmentsED", verifyToken, async (req, res) => {
+      const email = req.query.email;
+      const date = req.query.date;
+      const query = { patientEmail: email, date: date };
+      const userSpecificAppointments = orders.find(query);
+      const result = await userSpecificAppointments.toArray();
       res.send(result);
     });
 
