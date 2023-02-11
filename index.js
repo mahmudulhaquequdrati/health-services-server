@@ -21,7 +21,11 @@ app.use(json());
 // });
 
 admin.initializeApp({
-  credential: admin.credential.applicationDefault(),
+  credential: admin.credential.cert({
+    projectId: process.env.FIREBASE_PROJECT_ID,
+    clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+    privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+  }),
 });
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.tkswl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
@@ -34,13 +38,16 @@ const client = new MongoClient(uri, {
 async function verifyToken(req, res, next) {
   if (req?.headers?.authorization) {
     const token = req.headers.authorization.split(" ")[1];
+    // console.log(token);
 
     try {
-      const decodedUser = await admin.auth().verifyIdToken(token);
-      // sending data to request
-      req.decodedEmail = decodedUser.email;
+      if (token) {
+        const decodedUser = await admin.auth().verifyIdToken(token);
+        // sending data to request
+        req.decodedEmail = decodedUser.email;
+      }
     } catch (error) {
-      console.log(error);
+      console.log(error, "yyyy");
     }
   }
   next();
@@ -61,14 +68,14 @@ async function run() {
 
     // Get appointment
     app.get("/appointments", async (req, res) => {
-      const query = appointments.find({});
+      const query = await appointments.find({});
       const result = await query.toArray();
       res.send(result);
     });
 
     // Get all users appointments
     app.get("/userAppointments", async (req, res) => {
-      const query = orders.find({});
+      const query = await orders.find({});
       const result = await query.toArray();
       res.send(result);
     });
@@ -77,7 +84,7 @@ async function run() {
     app.get("/userTotalAppointment", async (req, res) => {
       const email = req.query.email;
       const query = { patientEmail: email };
-      const userAppointments = orders.find(query);
+      const userAppointments = await orders.find(query);
       const result = await userAppointments.toArray();
       res.send(result);
     });
@@ -86,14 +93,14 @@ async function run() {
     app.get("/todaysAppointment", async (req, res) => {
       const date = new Date(req.query.date);
       const query = { date: date.toLocaleDateString() };
-      const userAppointments = orders.find(query);
+      const userAppointments = await orders.find(query);
       const result = await userAppointments.toArray();
       res.send(result);
     });
 
     // Get all Patients //user
     app.get("/patients", async (req, res) => {
-      const query = users.find({});
+      const query = await users.find({});
       const result = await query.toArray();
       res.send(result);
     });
@@ -108,7 +115,7 @@ async function run() {
 
     // Get reviews
     app.get("/reviews", async (req, res) => {
-      const query = reviews.find({});
+      const query = await reviews.find({});
       const result = await query.toArray();
       res.send(result);
     });
@@ -116,7 +123,7 @@ async function run() {
 
     // Get blogs
     app.get("/blogs", async (req, res) => {
-      const query = blogs.find({});
+      const query = await blogs.find({});
       const result = await query.toArray();
       res.send(result);
     });
@@ -148,7 +155,7 @@ async function run() {
       const email = req.query.email;
       const date = req.query.date;
       const query = { patientEmail: email, date: date };
-      const userSpecificAppointments = orders.find(query);
+      const userSpecificAppointments = await orders.find(query);
       const result = await userSpecificAppointments.toArray();
       res.send(result);
     });
