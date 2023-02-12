@@ -48,12 +48,12 @@ async function verifyToken(req, res, next) {
         const decodedUser = await admin.auth().verifyIdToken(token);
         // sending data to request
         req.decodedEmail = decodedUser.email;
+        next();
       }
     } catch (error) {
-      console.log(error, "yyyy");
+      res.status(401).send("Unauthorized");
     }
   }
-  next();
 }
 
 async function run() {
