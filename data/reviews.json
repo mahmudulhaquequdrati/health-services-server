@@ -1,0 +1,28 @@
+[{
+  "_id": {
+    "$oid": "6223a8f2ef8a3e11bb9fa432"
+  },
+  "id": 1,
+  "description": "The hospital has an entire section within its website devoted to patient stories. The individuals within each story come from different backgrounds, genders, and races. ",
+  "name": "Winson Herry",
+  "img": "https://i.ibb.co/6Bw6zt2/man1.webp",
+  "address": "California"
+},{
+  "_id": {
+    "$oid": "6223a8f2ef8a3e11bb9fa433"
+  },
+  "id": 2,
+  "description": "That’s actually where they shine most. Instead of having thousands of the more common and generic two to three sentence reviews,The Cleveland Clinic turned them.",
+  "name": "Winson Herry",
+  "img": "https://i.ibb.co/G2CB8XM/man2.webp",
+  "address": "Washington"
+},{
+  "_id": {
+    "$oid": "6223a8f2ef8a3e11bb9fa434"
+  },
+  "id": 3,
+  "description": "If you provide better care at a lower cost, that’s something you need to let prospective clients know while they’re researching where to go for an appointment.",
+  "name": "Winson Herry",
+  "img": "https://i.ibb.co/6Bw6zt2/man1.webp",
+  "address": "New York"
+}]

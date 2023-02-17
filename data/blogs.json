@@ -1,0 +1,21 @@
+[{
+  "_id": {
+    "$oid": "6223abe0ef8a3e11bba33c60"
+  },
+  "id": 1,
+  "name": "Dr. Jhon Ak",
+  "date": "23 June 2021",
+  "img": "https://i.ibb.co/XYMPMJm/people-1.png",
+  "title": "2 times of brush can make you healthy.",
+  "description": "Dr. Robert M. Centor is an academic general internist at the University of Alabama School of Medicine. He also serves as the Regional Dean for the Regional Medical"
+},{
+  "_id": {
+    "$oid": "6223abe0ef8a3e11bba33c61"
+  },
+  "id": 2,
+  "name": "Dr. Jhon Bk",
+  "date": "23 June 2021",
+  "img": "https://i.ibb.co/G2CB8XM/man2.webp",
+  "title": "3 times of eat can make you healthy.",
+  "description": "FiercePracticeManagement provides the latest news, analysis, and trends impacting the practice of medicine. The site offers a daily newsletter to keep you up to date"
+}]

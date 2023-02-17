@@ -1,0 +1,51 @@
+[{
+  
+  "email": "test@gmail.com",
+  "displayName": "test",
+  "phone": "01825554468",
+  "role": "admin"
+},{
+  
+  "email": "mahmud2@gmail.com",
+  "displayName": "Qudrati",
+  "phone": "01999882931",
+  "role": "admin"
+},{
+  
+  "email": "final@testing.com",
+  "displayName": "Final Testing",
+  "phone": "01999882931",
+  "role": "admin"
+},{
+  
+  "email": "for@final.com",
+  "displayName": "For Final",
+  "phone": "01825554468"
+},{
+  
+  "email": "check@in.com",
+  "displayName": "Checking",
+  "phone": "01825554468"
+},{
+  
+  "email": "admin@gmail.com",
+  "displayName": "Admin Panel",
+  "phone": "+966662727222",
+  "role": "admin"
+},{
+  
+  "email": "romansheikh170@gmail.com",
+  "displayName": "Roman Sheikh",
+  "phone": "26165165165"
+},{
+  
+  "email": "jhdfjsk@mail.com",
+  "displayName": "hjghjg",
+  "phone": "566576"
+},{
+  
+  "email": "elon@mask.com",
+  "displayName": "Elon Musk",
+  "phone": "12334568985",
+  "role": "admin"
+}]
